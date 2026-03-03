@@ -1,0 +1,127 @@
+﻿<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cournot Pilot - Étudiant</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <section class="card" id="loginCard">
+        <h1 class="title-main">Jeu de concurrence à la Cournot</h1>
+        <p>Connectez-vous avec votre numéro étudiant.</p>
+        <div class="row">
+          <input id="studentIdInput" type="text" placeholder="Numéro étudiant" />
+          <button id="loginBtn">Connexion</button>
+        </div>
+        <p class="error" id="loginError"></p>
+      </section>
+
+      <section class="card hidden game-shell" id="gameCard">
+        <h1 class="title-main">Jeu de concurrence à la Cournot</h1>
+
+        <div class="top-grid">
+          <div class="mini-card">
+            <div class="mini-label">Ton niveau</div>
+            <h2 id="welcomeTitle"></h2>
+            <p id="levelBanner" class="level-banner hidden"></p>
+            <p id="levelStatusText"></p>
+            <p id="unlockRuleText"></p>
+          </div>
+          <div class="mini-card">
+            <div class="mini-label">État du jeu</div>
+            <p id="gameStateTitle"></p>
+            <p id="gameStateText"></p>
+          </div>
+        </div>
+
+        <div class="theory-box">
+          <h3 id="rulesTitle">Règles du jeu</h3>
+          <div id="rulesContent"></div>
+        </div>
+
+        <div class="theory-box">
+          <h3>Paramètres économiques</h3>
+          <p class="formula">Demande inverse: p = max(0, 60 - Q/2)</p>
+          <p class="formula">Coût marginal: Cm = 20</p>
+          <p>Avec Q = q (vous) + q (concurrent).</p>
+        </div>
+
+        <div id="level1Panel" class="panel-block">
+          <div class="mini-card">
+            <p class="round" id="level1RoundLabel"></p>
+            <p id="level1Instruction"></p>
+            <div class="row row-spread">
+              <label class="field">
+                <span>Choix du concurrent</span>
+                <input id="compQInput" type="number" min="0" max="100" readonly />
+              </label>
+              <label class="field">
+                <span>Votre quantité</span>
+                <input id="myQ1Input" type="number" min="0" max="100" />
+              </label>
+              <button id="playL1Btn">Valider</button>
+            </div>
+          </div>
+
+          <div class="mini-card">
+            <h3>Résultat du round</h3>
+            <p id="l1Result" class="result-box"></p>
+          </div>
+
+          <div class="mini-card">
+            <canvas id="l1Chart" height="120"></canvas>
+          </div>
+        </div>
+
+        <div id="level2Panel" class="hidden panel-block">
+          <div class="mini-card">
+            <p class="round" id="level2RoundLabel"></p>
+            <p id="level2Instruction"></p>
+            <div class="row row-inline">
+              <label class="field">
+                <span>Votre quantité</span>
+                <input id="myQ2Input" type="number" min="0" max="100" />
+              </label>
+              <button id="playL2Btn">Soumettre</button>
+            </div>
+          </div>
+
+          <div class="mini-card">
+            <h3>Résultat du round</h3>
+            <p id="l2Status" class="result-box"></p>
+            <p id="l2Result" class="result-box"></p>
+          </div>
+
+          <div class="mini-card">
+            <canvas id="l2Chart" height="120"></canvas>
+          </div>
+        </div>
+
+        <div class="mini-card">
+          <h3>Historique des décisions et paiements</h3>
+          <p id="cumProfit" class="result-box"></p>
+          <div class="history-wrap">
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th>Niveau</th>
+                  <th>Round</th>
+                  <th>q vous</th>
+                  <th>q concurrent</th>
+                  <th>Prix</th>
+                  <th>Paiement</th>
+                  <th>Profit cumulé</th>
+                </tr>
+              </thead>
+              <tbody id="historyBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="/student.js"></script>
+  </body>
+</html>

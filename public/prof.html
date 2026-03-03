@@ -1,0 +1,45 @@
+﻿<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cournot Pilot - Prof</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  </head>
+  <body>
+    <div class="bg-orb orb1"></div>
+    <div class="bg-orb orb2"></div>
+    <main class="container">
+      <section class="card">
+        <h1>Dashboard Prof - Cournot Pilot</h1>
+        <div class="stats" id="stats"></div>
+        <div class="row">
+          <button id="refreshBtn">Rafraîchir</button>
+          <button id="toggleGameBtn">Démarrer le jeu</button>
+          <button id="resetBtn">Reset total</button>
+          <button id="forceLevel2Btn">Démarrer immédiatement le niveau 2</button>
+          <a href="/api/prof/export.csv" class="button-link">Télécharger CSV</a>
+          <a href="/api/prof/export.json" class="button-link">Télécharger JSON</a>
+        </div>
+        <p id="profActionMsg" class="result-box"></p>
+      </section>
+
+      <section class="card">
+        <h2>Niveau 1: meilleure réponse</h2>
+        <p>Courbe grise: fonction de meilleure réponse théorique BR(q concurrent). Points verts: choix observés des étudiants.</p>
+        <canvas id="profL1Chart" height="120"></canvas>
+      </section>
+
+      <section class="card">
+        <h2>Niveau 2: meilleures réponses et choix observés</h2>
+        <p>
+          Courbes: fonctions de meilleure réponse théoriques BR1 et BR2. Points: choix observés des étudiants
+          (coordonnées q concurrent, q étudiant).
+        </p>
+        <canvas id="profL2Chart" height="120"></canvas>
+      </section>
+    </main>
+    <script src="/prof.js"></script>
+  </body>
+</html>

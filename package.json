@@ -1,0 +1,14 @@
+{
+  "name": "cournot-pilote",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cournot duopoly classroom game",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "xlsx": "^0.18.5"
+  }
+}
